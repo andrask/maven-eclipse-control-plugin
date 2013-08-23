@@ -7,9 +7,7 @@ socket, then a workspace refresh is started. The trigger can be implemented in t
 
     telnet localhost 43155
     
-Or anything similar that connects to the given port.
-
-The connection is immediately closed by the plugin after acception.
+Or anything similar that connects to the given port. The connection is immediately closed by the plugin after acception.
 
 To use this plugin from maven, simply add the following to your `pom.xml`
 
@@ -41,3 +39,24 @@ To use this plugin from maven, simply add the following to your `pom.xml`
       </build>
        ...
     </project>
+
+Or use it from command line args
+
+    mvn exec:exec -Dexec.executable="telnet" -Dexec.args="localhost 43155"
+
+Usage
+-----
+
+**Deployed from source**
+
+1. Import the plugin project in Eclipse.
+2. Run the plugin as an Eclipse Application. The plugin will be active in the new workspace after startup.
+
+**Deployed as plugin**
+
+1. Export the `refresher` project as deployable plugin.
+2. Copy the plugin jar to the destination eclipse's plugins folder.
+
+Caution
+-------
+The plugin uses a fixed port for listening, therefore, a single instance of eclipse is supported at one time.
